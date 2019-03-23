@@ -7,7 +7,7 @@ weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
     temp[0].textContent ="loading..."
     acctemp[0].textContent= ''
-    fetch('http://localhost:3000/weather?address='+search.value).then((result)=>{
+    fetch('/weather?address='+search.value).then((result)=>{
         result.json().then((data)=>{
             if(data.error){
                 temp.innerHTML(data.error)
