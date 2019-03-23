@@ -61,7 +61,13 @@ app.get('/weather', (req, res) => {
             res.send({
                 address: req.query.address,
                 temperature: result.temperature,
-                apparentTemprature: result.apparentTemprature
+                apparentTemprature: result.apparentTemprature,
+                timezone: result.timezone,
+                DailyComment: result.DailyComment,
+                TempHigh: result.TempHigh,
+                TempLow: result.TempLow,
+                cloudCover: result.cloudCover,
+                UV: result.UV
             })
             
         }

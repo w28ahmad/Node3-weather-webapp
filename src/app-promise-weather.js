@@ -14,11 +14,25 @@ var geocode = (address) => {
         var feelsFahrenheit = parseFloat(response.data.currently.apparentTemperature);
         var temperature = ((fahrenheit-32)*(5/9)).toFixed(2);
         var apparentTemprature = ((feelsFahrenheit-32)*(5/9)).toFixed(2);
+        var timezone = (response.data.timezone);
+        var DailyComment = (response.data.daily.summary);
+        var TempHigh = (((parseFloat(response.data.daily.data[0].temperatureHigh))-32)*(5/9)).toFixed(2);
+        var TempLow = (((parseFloat(response.data.daily.data[0].temperatureLow))-32)*(5/9)).toFixed(2);
+        var cloudCover = (response.data.daily.data[0].cloudCover);
+        var UV = (response.data.daily.data[0].uvIndex);
+
         return {
             temperature,
-            apparentTemprature
+            apparentTemprature, 
+            timezone,
+            DailyComment,
+            TempHigh,
+            TempLow,
+            cloudCover,
+            UV
         };
     }).catch((e)=>{
+        console.log(e)
         if(e.code === "ENOTFOUND"){
             console.log("Unable to connect to API servers");
         }else{
